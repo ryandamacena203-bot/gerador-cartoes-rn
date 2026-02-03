@@ -31,31 +31,22 @@ def completar_com_luhn(prefixo_str="", tamanho=16):
     
     return formatado
 
-def gerar_cartao_unico(bandeira, prefixo_input=""):
-    tamanho = 15 if bandeira == "amex" else 16
-    cvv = random.randint(1000, 9999) if bandeira == "amex" else random.randint(100, 999)
-    
-    if prefixo_input and prefixo_input.isdigit():
-        numero = completar_com_luhn(prefixo_input, tamanho)
-    else:
-        prefixos = {
-            "visa": "4",
-            "mastercard": random.choice(["51","52","53","54","55"]),
-            "amex": random.choice(["34","37"]),
-            "elo": random.choice(["4011","431274","438935","451416","457393","457631","504175","506699","506778","509000","636368"]),
-            "hipercard": random.choice(["38","60"]),
-        }
-        prefixo_base = prefixos.get(bandeira, "4")
-        numero = completar_com_luhn(prefixo_base, tamanho)
-    
-    mes = random.randint(1, 12)
-    ano = random.randint(25, 30)
-    
-    return {
-        "bandeira": bandeira.upper(),
-        "numero": numero,
-        "validade": f"{mes:02d}/{ano:02d}",
-        "cvv": cvv
+def mes = random.randint(1, 12)
+ano = random.randint(25, 30)
+if 'mes' in request.form and request.form['mes'].strip():
+    try:
+        mes = int(request.form['mes'])
+        if not 1 <= mes <= 12:
+            mes = random.randint(1, 12)
+    except:
+        mes = random.randint(1, 12)
+if 'ano' in request.form and request.form['ano'].strip():
+    try:
+        ano = int(request.form['ano'])
+        if not 25 <= ano <= 99:
+            ano = random.randint(25, 30)
+    except:
+        ano = random.randint(25, 30)
     }
 
 @app.route('/', methods=['GET', 'POST'])
@@ -88,4 +79,5 @@ def home():
                           quantidade=quantidade)
 
 if __name__ == '__main__':
+
     app.run(debug=True)
