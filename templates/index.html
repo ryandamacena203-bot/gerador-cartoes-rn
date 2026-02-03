@@ -93,40 +93,27 @@
         <h1>Gerador de Cartões Fictícios</h1>
         <p class="aviso">COMPREM O VIP DO @PIROCADAS</p>
 
-        <form method="POST">
-            <label>Bandeira:</label>
-            <select name="bandeira">
-                <option value="visa">Visa</option>
-                <option value="mastercard">Mastercard</option>
-                <option value="amex">American Express</option>
-                <option value="elo">Elo</option>
-                <option value="hipercard">Hipercard</option>
-            </select>
+      <form method="POST">
+    <label>Bandeira:</label>
+    <select name="bandeira">
+        <option value="visa">Visa</option>
+        <option value="mastercard">Mastercard</option>
+        <option value="amex">American Express</option>
+        <option value="elo">Elo</option>
+        <option value="hipercard">Hipercard</option>
+    </select>
 
-            <label>Primeiros dígitos (opcional, até 10):</label>
-            <input type="text" name="prefixo" placeholder="ex: 50671234" maxlength="10">
+    <label>Primeiros dígitos (opcional, até 10):</label>
+    <input type="text" name="prefixo" placeholder="ex: 50671234" maxlength="10">
 
-            <label>Quantidade (1 a 50):</label>
-            <input type="text" name="quantidade" placeholder="ex: 10" maxlength="2">
+    <label>Mês de validade (01-12):</label>
+    <input type="text" name="mes" placeholder="ex: 12" maxlength="2">
 
-            <button type="submit">GERAR CARTÕES</button>
-        </form>
+    <label>Ano de validade (ex: 29 para 2029):</label>
+    <input type="text" name="ano" placeholder="ex: 29" maxlength="2">
 
-        {% if cartoes %}
-        <div class="lista-cartoes">
-            <h2 style="color: #bb86fc; text-align: center;">Cartões Gerados</h2>
-            {% for cartao in cartoes %}
-            <div class="cartao-item">
-                <strong>#{{ loop.index }}</strong> - {{ cartao.bandeira }}<br>
-                Número: {{ cartao.numero }}<br>
-                Validade: {{ cartao.validade }}<br>
-                CVV: {{ cartao.cvv }}
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
-    </div>
+    <label>Quantidade (1-50):</label>
+    <input type="text" name="quantidade" placeholder="ex: 10" maxlength="2">
 
-    <footer>@rnkited</footer>
-</body>
-</html>
+    <button type="submit">GERAR CARTÕES</button>
+</form>
